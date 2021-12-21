@@ -190,6 +190,9 @@
     text-transform: uppercase;
   }
   
+  #previousCities:hover {
+    cursor: pointer;
+  }
   
   /* FLEX CONTENT */
   .flex-row {

@@ -3,12 +3,15 @@ var apiKey = "69b306c955b2b853b681d7ca8dfd46f3";
 var citySearchButton = document.querySelector("#citySearchButton"); 
 var cityList = document.querySelector("#previousCities");
 var cityArray = JSON.parse(localStorage.getItem("history")) || []
-
+var weatherContainer = document.querySelector("#weather-container");
 //api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 //var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "appid=" + apiKey
 var citySearchReturn = document.querySelector("#citySearchReturn");
-//var tempEl = (response.main.temp - 273.15) * 1.8 + 32;
-
+var dayOne = document.querySelector("#dayOne");
+var dayTwo = document.querySelector("#dayTwo");
+var dayThree = document.querySelector("#dayThree");
+var dayFour = document.querySelector("#dayFour");
+var dayFive = document.querySelector("#dayFive");
 
 function returnCities() {
     localStorage.getItem(savedCity, cityName)
@@ -36,9 +39,10 @@ var displayWeather = function (weather, cityWeather) {
     for (var i = 0; i < weather.length; i++ ) {
         var weatherDay = weather[i].data
         var forcastDay = document.createElement("div");
-        forcastDay.classList = "list-item flex-row align-center justify-space-between";
-        //forcastDay.setAttribute("id", );
+        forcastDay.classList = "list-item flex-row align-center justify-space-between weather-channel";
         forcastDay.textContent = weatherDay;
+        weatherContainer.append(forcastDay);
+        citySearchReturn.innerText = cityName;
 
 
     }
@@ -61,6 +65,20 @@ function dailyWeather(city){
             console.log(data.main.feels_like);
             // displayWeather(data, cityName);
             // console.log(data);
+            var cityLon = data.coord.lon;
+            var cityLat = data.coord.lat;
+            console.log(cityLon);
+            console.log(cityLat);
+           // .then(function ())
+           var weatherAPI = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude=hourly,&appid=" + apiKey;
+          fetch(weatherAPI)
+            .then(function (response) {
+              if (response.ok)  {
+                response.json().then(function (fData) {
+                  console.log(fData);
+                })
+              }
+            })
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -78,6 +96,7 @@ function renderCities() {
   cityList.innerHTML = "";
   for (var i = 0; i < cityArray.length; i++) {
   var previousCities = document.createElement("li");
+  previousCities.classList = "list-item"
   previousCities.textContent = cityArray[i];
   previousCities.addEventListener("click", function(event){
     var city = event.target.innerText;

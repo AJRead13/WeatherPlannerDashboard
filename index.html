@@ -33,20 +33,27 @@
                     <input name="city" placeholder="City Name" id="citySearchInput" type="text" autofocus="true" class="form-input" />
                     <button type="button" id="citySearchButton" class="btn">Get Weather</button>
                 </form>
-                <ul id="previousCities"></ul>
+                
             </div>
 
             <div class="card">
                 <h3 class="card-header text-uppercase">Previously Visited Cities</h3>
+                    <ul id="previousCities"></ul>
                 <div id="city-buttons" class="card-body">
 
                 </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-8 col-lg-9">
+        <div id="forcastedWeather" class="col-12 col-md-8 col-lg-9">
             <h2 class="subtitle">Showing Weather for: <span id="citySearchReturn"></span></h2>
-            <div id="weather-container" class="list-group"></div>
+            <div id="weather-container" class="list-group flex-row"></div>
+                <div id="dayOne"></div>
+                <div id="dayTwo"></div>
+                <div id="dayThree"></div>
+                <div id="dayFour"></div>
+                <div id="dayFive"></div>
+
         </div>
     </main>
 

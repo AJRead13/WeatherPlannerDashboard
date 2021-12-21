@@ -13,9 +13,9 @@
 ## Installation
 No install required
 ## Usage
-Open in browser.  
+Open in browser.   https://ajread13.github.io/WeatherPlannerDashboard/
 ## Screenshot
-![screenshot start] 
+![screenshot start] "assets/images/presearchscreenshot.png"
 
 N/A
 ## License

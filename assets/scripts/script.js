@@ -36,7 +36,7 @@ var displayWeather = function (weather, cityWeather) {
     }
     cityName.textContent = city;    
 
-    for (var i = 0; i < weather.length; i++ ) {
+    for (var i = 0; i < fData.daily.length-3; i++ ) {
         var weatherDay = weather[i].data
         var forcastDay = document.createElement("div");
         forcastDay.classList = "list-item flex-row align-center justify-space-between weather-channel";
@@ -83,6 +83,7 @@ function dailyWeather(city){
                   console.log(fData.daily[0]);
                   console.log(fData.daily[0].feels_like);
                   console.log(fData.daily[0].feels_like.day);
+                  
                 })
               }
             })
@@ -94,7 +95,7 @@ function dailyWeather(city){
       .catch(function (error) {
         alert('Unable to connect to Weather');
       });
-displayWeather();
+displayWeather();return fData;
 }
 
 function renderCities() {

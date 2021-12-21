@@ -3,7 +3,7 @@
 - The purpose of this project was to create a dashboard that provided a 5 day forecast to users of their selected cities.
 - This assignment shows how data can be acquired from servers and taken to populate your own webpages.
 - The issue that gave me the most difficulty was converting the data I pulled from the API and getting it to populate the dashboard.  
-- I have learned a good amount of how JQuery can do some of the leg work in traversing the DOM as well as how Bootstrap can quickly roughly style a page based on a few universal classes.  Moment.js is also a great tool for working with anything related to time.
+- Through-out this project I learned a repeatable process for accessing and displaying data retrieved by an API call.  I also furthered my abilities to dynamically generate elements on the page.
 ## Table of Contents
 
 - [Installation](#installation) -- No install necessary

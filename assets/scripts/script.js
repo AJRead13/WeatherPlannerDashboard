@@ -30,7 +30,7 @@ var getWeather = function (event) {
 //localStorage.setItem(savedCity, cityName)
 
 var displayWeather = function (weather, cityWeather) {
-    if (weather.length === 0) {
+    if (fData.length === 0) {
         citySearchReturn.textContent = "No Weather Data Available";
         return;
     }
@@ -43,6 +43,9 @@ var displayWeather = function (weather, cityWeather) {
         forcastDay.textContent = weatherDay;
         weatherContainer.append(forcastDay);
         citySearchReturn.innerText = cityName;
+        var oneTemp = document.createElement("p");
+        oneTemp.textContent = fData.daily[0].feels_like.day; 
+        dayOne.append(oneTemp);
 
 
     }
@@ -70,12 +73,16 @@ function dailyWeather(city){
             console.log(cityLon);
             console.log(cityLat);
            // .then(function ())
-           var weatherAPI = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude=hourly,&appid=" + apiKey;
+           var weatherAPI = "https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=" + cityLat + "&lon=" + cityLon + "&exclude=hourly,&appid=" + apiKey;
           fetch(weatherAPI)
             .then(function (response) {
               if (response.ok)  {
                 response.json().then(function (fData) {
                   console.log(fData);
+                  console.log(fData.daily);
+                  console.log(fData.daily[0]);
+                  console.log(fData.daily[0].feels_like);
+                  console.log(fData.daily[0].feels_like.day);
                 })
               }
             })
@@ -87,7 +94,7 @@ function dailyWeather(city){
       .catch(function (error) {
         alert('Unable to connect to Weather');
       });
-
+displayWeather();
 }
 
 function renderCities() {
